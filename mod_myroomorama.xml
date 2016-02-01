@@ -1,0 +1,218 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- $Id: default.php 53 2015-11-14 23:35:00 kostas_stathakos $ -->
+<!-- File structure explained here: http://docs.joomla.org/Using_the_installer_API_to_support_package_installation -->
+<!-- Extension Install Script -->
+<extension type="module" version="1.0.1" client="site" method="upgrade">
+  <name>My Roomoramma</name>
+  <author>Kostas Stathakos</author>
+  <creationDate>26SEP2014</creationDate>
+  <copyright>Copyright (C) 2014 e-leven.net All rights reserved.</copyright>
+  <license>http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL</license>
+  <authorEmail>info@e-leven.net</authorEmail>
+  <authorUrl>e-leven.net</authorUrl>
+  <version>1.0.1</version>
+  <description><![CDATA[
+        <div align="center">
+          <table border="0" width="90%">
+            <tr>
+              <td width="100%" colspan="2">
+                <div align="center">
+                  <h3>My Roomorama Module for Joomla! 3.x</h3>
+                </div>
+                <hr />
+              </td>
+            </tr>
+            <tr>
+              <td width="100%" colspan="2">
+                <div align="left">
+<strong>Direct web traffic to your Roomorama property of choice and make your personal or travel blog/webpage a little more attractive.</strong><br/><br/>
+<strong>This module displays a Roomorama listing on your Joomla CMS web page. </strong> <br/>
+The listing can be your own listing, a friend's, or someone else's, like a property you booked while on your travels.
+<br/><br/>
+You can choose what information you want to display or hide, like the listing's image, rules, rooms and size, description, etc.
+<br/><br/>
+Through this module, a visitor can go directly to Roomorama from your website and complete a successful booking.
+<br/><br/>
+<strong>Configuration options</strong><br/>
+----------------------------------------------<br/>
+
+This is what you <strong>MUST</strong> configure:<br/><br/>
+
+    * <strong>Roomorama listing Id - the number of your listing, which you simple copy and paste from your listing's page on the Roomorama website.</strong><br/>
+   
+  <br/> 
+This is what you may configure:<br/>
+<br/>
+    * Display image - you may want to disable this although it is great to show an image.<br/>
+    * Image width: You can select the image width in percentage.<br/>
+    * Display Roomorama logo - if you don't want to show the brand, disable this.<br/>
+    * Display location - displays the town and country where the listing is located.<br/>
+    * Display or hide amenities, size of property, number of rooms, bathrooms, beds, and description text.<br/>
+    * Comment - you can add an additional comment about the Roomorama listing. If left blank, no comment will be displayed.<br/><br/>
+
+The geekier bits:<br/><br/>
+    * API Encoding - Choose JSON or XML. Default is JSON.<br/>
+    * Debug - enable this to display the content of the API calls displayed. This setting is not affected by the Global Joomla Debug setting, nor does this setting affect the Joomla Global one.<br/>
+<br/><br/>
+
+<strong>Displaying multiple Roomorama listings</strong><br/>
+----------------------------------------------<br/>
+
+You can only configure one Roomorama listing per module. If you want to show multiple Roomorama listings, then set up multiple modudes instances on your Joomla website. <br/>
+The amount of information you display is highly configurable for each module instance.<br/>
+
+<br/>
+
+<strong>Uninstallation</strong><br/>
+--------------<br/>
+Uninstall the module through the Joomla Extension Manager. You will lose your configuration data, so take note of the the details first if they are important to you.
+<br/>
+
+<br/>
+<strong>Special thanks</strong><br/>
+---------------------------------
+<br/>This module is based on Gerrit Hoekstra's Auction Affiliate for ebay module so special thanks to him!
+<br/> http://extensions.joomla.org/extension/auction-affiliate-for-ebay
+<br/><br/>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td width="18%"><strong>Languages supported:</strong></td>
+              <td width="80%"><ul><li>English (en-GB)</li></ul></td>
+            </tr>
+          </table>
+        </div>
+    ]]>
+  </description>
+      
+  <files>
+    <filename module="mod_myroomorama">mod_myroomorama.php</filename>
+    <filename>README.txt</filename>
+    <filename>helper.php</filename>
+    <filename>functions.php</filename>
+    <filename>index.html</filename>
+    <filename>tmpl/default.php</filename>
+    <filename>tmpl/index.html</filename>
+    <filename>images/Roomorama_logo_small.png</filename>
+    <filename>images/index.html</filename>
+  </files>
+
+  <!-- Language -->
+  <languages folder="language">
+    <language tag="en-GB">lang/en-GB/en-GB.mod_myroomorama.ini</language>
+  </languages>
+
+  <!-- Configuration -->
+  <config>
+    <fields name="params">
+      
+      <fieldset name="basic" label="ARTICLE_OPTIONS_FIELDSET">  
+    <field type="spacer" class="text" label="BASIC_OPTIONS_DESC" />   
+        <field name="itemid" type="text" size="48" default="" label="ITEMIDROOMORAMA" description="ITEMIDROOMORAMA_DESC" />    
+	 <field name="display_image" type="radio" default="1" label="DISPLAY_IMAGE" description="DISPLAY_IMAGE_DESC">
+          <option value="0">JNO</option>
+          <option value="1">JYES</option>
+        </field>
+        <field name="display_location" type="radio" default="1" label="DISPLAY_LOCATION" description="DISPLAY_LOCATION_DESC">
+          <option value="0">JNO</option>
+          <option value="1">JYES</option>
+        </field>
+	 <field name="display_logo" type="radio" default="1" label="DISPLAY_LOGO" description="DISPLAY_LOGO_DESC">
+          <option value="0">JNO</option>
+          <option value="1">JYES</option>
+        </field>
+	
+	 <field type="spacer" class="text" label="BASIC_DETAILS_DESC" />   
+	 <field name="display_amen" type="list" default="1" label="DISPLAY_AMEN" description="DISPLAY_AMEN_DESC">     
+          <option value="1">Yes, ul/li style</option>    
+          <option value="2">Yes, csv style</option>
+          <option value="3">No</option>   
+        </field>
+	<field name="display_rules" type="radio" default="1" label="DISPLAY_RULES" description="DISPLAY_RULES_DESC">
+          <option value="0">JNO</option>
+          <option value="1">JYES</option>
+        </field>    
+        <field name="display_rooms" type="radio" default="1" label="DISPLAY_ROOMS" description="DISPLAY_ROOMS_DESC">
+          <option value="0">JNO</option>
+          <option value="1">JYES</option>
+        </field> 
+	<field name="display_beds" type="radio" default="0" label="DISPLAY_BEDS" description="DISPLAY_BEDS_DESC">
+          <option value="0">JNO</option>
+          <option value="1">JYES</option>
+        </field>
+	<field name="display_surface_size" type="radio" default="1" label="DISPLAY_SURFACE" description="DISPLAY_SURFACE_DESC">
+          <option value="0">JNO</option>
+          <option value="1">JYES</option>
+        </field>       
+	<field name="display_floor" type="radio" default="1" label="DISPLAY_FLOOR" description="DISPLAY_FLOOR_DESC">
+          <option value="0">JNO</option>
+          <option value="1">JYES</option>
+        </field>  
+	<field name="display_desc" type="radio" default="1" label="DISPLAY_DESC" description="DISPLAY_DESC_DESC">
+          <option value="0">JNO</option>
+          <option value="1">JYES</option>
+        </field>		
+	<field name="comment" type="textarea" default="" label="COMMENT" description="COMMENT_DESC" cols="40" rows="3" />   
+      </fieldset>
+      
+	<fieldset name="advanced_article_options" label="ADV_ARTICLE_OPTIONS_FIELDSET">  
+	<field name="containrss" type="text" size="48" default="" label="CONTAINER_CSS" description="CONTAINER_CSS_DESC" />
+      	 <field type="spacer" class="text" label="INFO_OPTIONS_DESC" />   
+	<field name="infocss" type="text" size="48" default="" label="INFO_CSS" description="INFO_CSS_DESC" />
+	<field name="infotblCSS" type="text" size="48" default="table table-hover" label="INFO_TABLE_CSS" description="INFO_TABLE_CSS_DESC" />
+	 <field name="amen_css" type="text" size="48" default="" label="AMEN_CSS" description="AMEN_CSS_DESC" />
+	 <field name="amen_ul_css" type="text" size="48" default="" label="AMEN_UL_CSS" description="AMEN_UL_CSS_DESC" />
+	  <field name="ul_split_number" type="list" default="" label="UL_SPLIT" description="UL_SPLIT_DESC"> 
+	  <option value="0">All (no split)</option> 
+          <option value="2">2</option>    
+          <option value="3">3</option>
+          <option value="4">4</option>
+	  <option value="5">5</option>
+          <option value="6">6</option> 
+	  <option value="7">7</option>
+          <option value="8">8</option> 
+	  <option value="9">9</option>  
+	  <option value="10">10</option>     
+        </field>
+	<field type="spacer" class="text" label="BOOK_OPTIONS_DESC" />
+	<field name="searchbtnCSS" type="text" size="48" default="" label="FORM_CSS" description="FORM_CSS_DESC" />
+     
+        <field name="display_theme" type="list" default="default" label="FORM_THEME" description="FORM_THEME_DESC">     
+          <option value="default">default</option>    
+          <option value="dark_bg">dark_bg</option>
+          <option value="custom">custom</option>          
+        </field>
+		<field type="spacer" class="text" label="IMG_OPTIONS_DESC" />
+	<field name="imageclass" type="text" size="48" default="" label="IMG_CLASS" description="IMG_CLASS_DESC" />
+        <field name="image_width" type="text" size="48" default="200" label="WIDTHIMAGE" description="WIDTHIMAGE_DESC"/>
+	 </fieldset>
+      <!-- Development Options -->
+      <fieldset name="development" label="DEVEOPMENT_OPTIONS_FIELDSET">        
+        <!-- <field type="spacer" class="text" label="DEVELOPMENT_DESC"/> -->    
+        <field name="encoding" type="radio" default="0" label="ENCODING" description="ENCODING_DESC">
+          <option value="0">JNO</option>
+          <option value="1">JYES</option>
+        </field>
+        <field name="debug" type="radio" default="0" label="DEBUG" description="DEBUG_DESC">
+          <option value="0">JNO</option>
+          <option value="1">JYES</option>
+        </field>
+      </fieldset>
+
+      <!-- Advanced Configuration -->
+      <fieldset name="advanced">
+        <field name="moduleclass_sfx" type="text" label="COM_MODULES_FIELD_MODULECLASS_SFX_LABEL" description="COM_MODULES_FIELD_MODULECLASS_SFX_DESC"/>
+        <field name="cache" type="list" default="0" label="COM_MODULES_FIELD_CACHING_LABEL" description="COM_MODULES_FIELD_CACHING_DESC">
+          <option value="1">JGLOBAL_USE_GLOBAL</option>
+          <option value="0">COM_MODULES_FIELD_VALUE_NOCACHING</option>
+        </field>
+        <field name="cache_time" type="text" default="900" label="COM_MODULES_FIELD_CACHE_TIME_LABEL" description="COM_MODULES_FIELD_CACHE_TIME_DESC"/>
+        <field name="cachemode" type="hidden" default="static">
+          <option value="static"></option>
+        </field>
+      </fieldset>
+      
+    </fields>
+  </config>
+</extension>
